@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
-import { Package, ArrowRight } from 'lucide-react';
+import { Package, ArrowRight, FileText, Download } from 'lucide-react';
 import FadeInView from '@/components/animations/FadeInView';
 
 export default function Products() {
@@ -11,6 +11,7 @@ export default function Products() {
 
   const categories = [
     { id: 'all', name: 'All Products' },
+    { id: 'catalogs', name: 'Parts Catalogs (PDF)' },
     { id: 'hino', name: 'HINO Parts' },
     { id: 'defender', name: 'Defender Parts' },
     { id: 'isuzu', name: 'Isuzu Parts' },
@@ -18,6 +19,24 @@ export default function Products() {
   ];
 
   const products = [
+    {
+      id: 17,
+      category: 'catalogs',
+      name: 'Multi-Brand Parts Catalog',
+      description:
+        'Full product price list covering Toyota, Suzuki, Hyundai, Honda, Daihatsu, Mitsubishi, Nissan & Mazda parts',
+      price: 'Click below to download items list',
+      pdfUrl: '/multi-brand-parts-catalog.pdf',
+    },
+    {
+      id: 18,
+      category: 'catalogs',
+      name: 'Shock Absorbers Price List',
+      description:
+        'Front & rear shock absorber compatibility list, steering dampers and cabin shocks',
+      price: 'Click below to download items list',
+      pdfUrl: '/shock-absorbers-price-list.pdf',
+    },
     {
       id: 1,
       category: 'hino',
@@ -228,13 +247,17 @@ export default function Products() {
                         transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
                         className="absolute opacity-10"
                       >
-                        <Package size={80} />
+                        {product.pdfUrl ? <FileText size={80} /> : <Package size={80} />}
                       </motion.div>
                       <motion.div
                         whileHover={{ scale: 1.1 }}
                         className="relative z-10"
                       >
-                        <Package size={48} className="text-primary-600" />
+                        {product.pdfUrl ? (
+                          <FileText size={48} className="text-primary-600" />
+                        ) : (
+                          <Package size={48} className="text-primary-600" />
+                        )}
                       </motion.div>
                     </div>
 
@@ -255,15 +278,27 @@ export default function Products() {
                         whileHover={{ x: 5 }}
                         className="mt-auto"
                       >
-                        <Link href="/contact">
-                          <button className="w-full bg-primary-600 hover:bg-primary-700 text-white py-2 rounded-lg font-semibold transition-all flex items-center justify-center gap-2 group/btn">
-                            Request Quote
-                            <ArrowRight
-                              size={16}
-                              className="group-hover/btn:translate-x-1 transition-transform"
-                            />
-                          </button>
-                        </Link>
+                        {product.pdfUrl ? (
+                          <a href={product.pdfUrl} download>
+                            <button className="w-full bg-primary-600 hover:bg-primary-700 text-white py-2 rounded-lg font-semibold transition-all flex items-center justify-center gap-2 group/btn">
+                              Download PDF
+                              <Download
+                                size={16}
+                                className="group-hover/btn:translate-y-0.5 transition-transform"
+                              />
+                            </button>
+                          </a>
+                        ) : (
+                          <Link href="/contact">
+                            <button className="w-full bg-primary-600 hover:bg-primary-700 text-white py-2 rounded-lg font-semibold transition-all flex items-center justify-center gap-2 group/btn">
+                              Request Quote
+                              <ArrowRight
+                                size={16}
+                                className="group-hover/btn:translate-x-1 transition-transform"
+                              />
+                            </button>
+                          </Link>
+                        )}
                       </motion.div>
                     </div>
                   </div>

@@ -133,7 +133,7 @@ export default function Footer() {
                 className="flex items-start gap-3 text-gray-400 hover:text-primary-400 transition-colors cursor-pointer"
               >
                 <MapPin size={20} className="mt-1 flex-shrink-0" />
-                <span>Karachi, Pakistan</span>
+                <span>F-95, 2nd Floor, Ruby Plaza, Preedy Street, Saddar, Karachi</span>
               </motion.div>
               <motion.a
                 href="tel:+923001234567"
@@ -141,7 +141,7 @@ export default function Footer() {
                 className="flex items-center gap-3 text-gray-400 hover:text-primary-400 transition-colors"
               >
                 <Phone size={20} />
-                <span>+92-300-XXXXXXX</span>
+                <span>+92-321-2472470</span>
               </motion.a>
               <motion.a
                 href="mailto:info@aacompany.com"
