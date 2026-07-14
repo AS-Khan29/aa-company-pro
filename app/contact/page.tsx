@@ -142,7 +142,7 @@ export default function Contact() {
               {
                 icon: MapPin,
                 title: 'Location',
-                content: 'Karachi, Pakistan',
+                content: 'F-95, 2nd Floor, Ruby Plaza, Preedy Street, Saddar, Karachi ',
                 color: 'from-blue-500 to-blue-600',
               },
               {
@@ -154,7 +154,7 @@ export default function Contact() {
               {
                 icon: Mail,
                 title: 'Email',
-                content: 'info@aacompany.com',
+                content: 'info@aandacompany.com',
                 color: 'from-accent-500 to-accent-600',
               },
             ].map((item) => {
