@@ -154,7 +154,7 @@ export default function Contact() {
               {
                 icon: Mail,
                 title: 'Email',
-                content: 'info@aandacompany.com',
+                content: 'info@aacompany.com',
                 color: 'from-accent-500 to-accent-600',
               },
             ].map((item) => {
