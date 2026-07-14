@@ -142,19 +142,19 @@ export default function Contact() {
               {
                 icon: MapPin,
                 title: 'Location',
-                content: 'Karachi, Pakistan',
+                content: 'F-95, 2nd Floor, Ruby Plaza, Preedy Street, Saddar, Karachi ',
                 color: 'from-blue-500 to-blue-600',
               },
               {
                 icon: Phone,
                 title: 'Phone',
-                content: '+92-300-XXXXXXX',
+                content: '+92-321-2472470',
                 color: 'from-purple-500 to-purple-600',
               },
               {
                 icon: Mail,
                 title: 'Email',
-                content: 'info@aacompany.com',
+                content: 'info@aandacompany.com',
                 color: 'from-accent-500 to-accent-600',
               },
             ].map((item) => {
