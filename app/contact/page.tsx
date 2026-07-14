@@ -148,7 +148,7 @@ export default function Contact() {
               {
                 icon: Phone,
                 title: 'Phone',
-                content: '+92-300-XXXXXXX',
+                content: '+92-321-2472470',
                 color: 'from-purple-500 to-purple-600',
               },
               {
