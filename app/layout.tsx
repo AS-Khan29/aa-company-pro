@@ -4,7 +4,6 @@ import './globals.css';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import ScrollProgress from '@/components/animations/ScrollProgress';
-import PageTransition from '@/components/animations/PageTransition';
 import { Toaster } from 'sonner';
 
 const inter = Inter({
@@ -58,9 +57,7 @@ export default function RootLayout({
       >
         <Navigation />
         <ScrollProgress />
-        <main className="min-h-screen">
-          <PageTransition>{children}</PageTransition>
-        </main>
+        <main className="min-h-screen">{children}</main>
         <Footer />
         <Toaster position="bottom-right" richColors />
       </body>
