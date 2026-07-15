@@ -204,7 +204,7 @@ export default function About() {
 
               <p className="px-4 py-3 bg-gray-50 font-semibold text-gray-800">
 
-                CLS Visit - 2018
+                DG EME - 2018
 
               </p>
 
@@ -240,7 +240,7 @@ export default function About() {
 
               <p className="px-4 py-3 bg-gray-50 font-semibold text-gray-800">
 
-                CLS Visit - 2018
+                DG EME - 2018
 
               </p>
 
