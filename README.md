@@ -158,7 +158,7 @@ Works with any platform that supports Next.js (Netlify, Render, etc.)
 
 ## 🤝 Support
 
-For questions or issues, contact: info@aacompany.com
+For questions or issues, contact: info@aandacompany.com
 
 ## 📄 License
 

@@ -68,9 +68,9 @@ export default function About() {
 
       year: '2020',
 
-      title: 'SCIPA Contract',
+      title: 'SICPA Contract',
 
-      description: 'Began supplying steel buckets to SCIPA Printing Press',
+      description: 'Began supplying steel buckets to SICPA Printing Press',
 
     },
 

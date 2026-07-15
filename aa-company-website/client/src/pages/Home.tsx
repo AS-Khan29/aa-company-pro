@@ -40,7 +40,7 @@ export default function Home() {
               </h1>
 
               <p className="text-lg text-foreground/80 mb-8 max-w-lg leading-relaxed">
-                30+ years of excellence in defense vehicle spare parts and general order supplies. Trusted by Pakistan Army, PIA, DHA Karachi, and SCIPA.
+                30+ years of excellence in defense vehicle spare parts and general order supplies. Trusted by Pakistan Army, PIA, DHA Karachi, and SICPA.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">

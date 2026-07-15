@@ -22,7 +22,7 @@ export default function Services() {
         'Pakistan Army workshops supply',
         'PIA logistics support',
         'DHA Karachi partnership',
-        'SCIPA printing press supplies',
+        'SICPA printing press supplies',
       ],
       color: 'from-blue-500 to-blue-600',
     },
@@ -158,7 +158,7 @@ export default function Services() {
               {
                 title: 'Trusted Partners',
                 description:
-                  'Official supplier to Pakistan Army, PIA, DHA, and SCIPA',
+                  'Official supplier to Pakistan Army, PIA, DHA, and SICPA',
               },
               {
                 title: '24/7 Support',

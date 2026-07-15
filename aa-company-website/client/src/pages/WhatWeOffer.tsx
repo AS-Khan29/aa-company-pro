@@ -164,7 +164,7 @@ export default function WhatWeOffer() {
               },
               {
                 title: "Trusted Partners",
-                description: "Serving Pakistan Army, PIA, DHA Karachi, and SCIPA with distinction",
+                description: "Serving Pakistan Army, PIA, DHA Karachi, and SICPA with distinction",
               },
               {
                 title: "Quality Assured",

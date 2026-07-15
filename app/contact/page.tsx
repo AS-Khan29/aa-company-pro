@@ -126,7 +126,7 @@ export default function Contact() {
               {
                 icon: Mail,
                 title: 'Email',
-                content: 'info@aacompany.com',
+                content: 'info@aandacompany.com',
                 color: 'from-accent-500 to-accent-600',
               },
             ].map((item) => {

@@ -61,7 +61,7 @@ export default function AboutUs() {
       year: 2020,
       title: "Industrial Supply Expansion",
       description:
-        "Started supplying steel buckets to SCIPA Printing Press for ink storage, diversifying product portfolio.",
+        "Started supplying steel buckets to SICPA Printing Press for ink storage, diversifying product portfolio.",
       details:
         "Demonstrated adaptability and capability to serve specialized industrial requirements.",
     },

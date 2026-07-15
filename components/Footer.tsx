@@ -108,11 +108,11 @@ export default function Footer() {
                 <span>+92-321-2472470</span>
               </a>
               <a
-                href="mailto:info@aacompany.com"
+                href="mailto:info@aandacompany.com"
                 className="flex items-center gap-3 text-gray-400 hover:text-primary-400 transition-colors"
               >
                 <Mail size={20} />
-                <span>info@aacompany.com</span>
+                <span>info@aandacompany.com</span>
               </a>
             </div>
           </div>

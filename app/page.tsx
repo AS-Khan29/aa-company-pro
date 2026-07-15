@@ -67,8 +67,7 @@ export default function Home() {
     'Pakistan Army',
     'PIA',
     'DHA Karachi',
-    'SCIPA',
-    'HINO Authorized',
+    'SICPA',
     'Defender Parts',
     'Isuzu Logistics',
     'Defense Supply',
@@ -104,7 +103,7 @@ export default function Home() {
               <p className="text-xl text-gray-600 mb-8 leading-relaxed max-w-xl">
                 30+ years of excellence in defense vehicle spare parts and
                 general order supplies. Trusted by Pakistan Army, PIA, DHA
-                Karachi, and SCIPA.
+                Karachi, and SICPA.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">
