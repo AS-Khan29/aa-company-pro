@@ -43,12 +43,29 @@ export default function Contact() {
     setQuoteForm((prev) => ({ ...prev, [name]: value }));
   };
 
+  // Honeypot field: hidden from real users, bots tend to fill it in.
+  const [website, setWebsite] = useState('');
+
+  const sendToServer = async (
+    type: 'contact' | 'quote',
+    data: Record<string, string>
+  ) => {
+    const res = await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ type, ...data, website }),
+    });
+    const result = await res.json().catch(() => null);
+    if (!res.ok || !result?.ok) {
+      throw new Error(result?.error || 'Request failed');
+    }
+  };
+
   const handleContactSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setContactLoading(true);
     try {
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      await sendToServer('contact', contactForm);
       toast.success('Message sent successfully! We will contact you soon.');
       setContactForm({
         name: '',
@@ -59,7 +76,11 @@ export default function Contact() {
         message: '',
       });
     } catch (error) {
-      toast.error('Failed to send message. Please try again.');
+      toast.error(
+        error instanceof Error && error.message !== 'Request failed'
+          ? error.message
+          : 'Failed to send message. Please try again.'
+      );
     } finally {
       setContactLoading(false);
     }
@@ -69,8 +90,7 @@ export default function Contact() {
     e.preventDefault();
     setQuoteLoading(true);
     try {
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      await sendToServer('quote', quoteForm);
       toast.success('Quote request submitted! We will get back to you soon.');
       setQuoteForm({
         name: '',
@@ -83,7 +103,11 @@ export default function Contact() {
         description: '',
       });
     } catch (error) {
-      toast.error('Failed to submit quote request. Please try again.');
+      toast.error(
+        error instanceof Error && error.message !== 'Request failed'
+          ? error.message
+          : 'Failed to submit quote request. Please try again.'
+      );
     } finally {
       setQuoteLoading(false);
     }
@@ -185,6 +209,16 @@ export default function Contact() {
                 onSubmit={handleContactSubmit}
                 className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100"
               >
+                <input
+                  type="text"
+                  name="website"
+                  value={website}
+                  onChange={(e) => setWebsite(e.target.value)}
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                  className="absolute -left-[9999px] h-0 w-0 opacity-0"
+                />
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                   <div>
                     <label className="block text-gray-700 font-semibold mb-2">
@@ -303,6 +337,16 @@ export default function Contact() {
                 onSubmit={handleQuoteSubmit}
                 className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100"
               >
+                <input
+                  type="text"
+                  name="website"
+                  value={website}
+                  onChange={(e) => setWebsite(e.target.value)}
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                  className="absolute -left-[9999px] h-0 w-0 opacity-0"
+                />
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                   <div>
                     <label className="block text-gray-700 font-semibold mb-2">

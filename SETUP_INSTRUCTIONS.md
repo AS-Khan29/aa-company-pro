@@ -411,3 +411,22 @@ A: Create API route in `app/api/contact/route.ts` to handle form submissions.
 
 **Last Updated**: 2024
 **Version**: 1.0.0
+
+## Contact / Quote form email (Zoho SMTP)
+
+Both forms on `/contact` POST to `app/api/contact/route.ts`, which emails
+`info@aandacompany.com` through Zoho SMTP. Reply-To is set to the visitor's
+address, so replying in Zoho answers the visitor directly.
+
+Required environment variables (see `.env.example`):
+
+| Name | Purpose |
+| --- | --- |
+| `ZOHO_SMTP_USER` | Zoho mailbox used to send (e.g. `info@aandacompany.com`) |
+| `ZOHO_SMTP_PASS` | Zoho **app password** for that mailbox |
+| `CONTACT_TO_EMAIL` | Recipient (defaults to `ZOHO_SMTP_USER`) |
+| `ZOHO_SMTP_HOST` | Optional. Match your Zoho data center (`smtp.zoho.com`, `.eu`, `.in`, `.com.au`) |
+| `ZOHO_SMTP_PORT` | Optional. `465` (SSL, default) or `587` (STARTTLS) |
+
+Local: copy `.env.example` to `.env.local`. Production: add the same variables in
+Vercel -> Project -> Settings -> Environment Variables, then redeploy.
