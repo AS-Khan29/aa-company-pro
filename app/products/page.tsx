@@ -32,7 +32,7 @@ export default function Products() {
       category: 'catalogs',
       name: 'Shock Absorbers Price List',
       description:
-        'Front & rear shock absorber compatibility list, steering dampers and cabin shocks',
+        'Front & rear shock absorbers for Corolla, Mehran, Cultus, Hiace, Hilux, Hino, Isuzu & Defender, plus steering dampers and cabin shocks',
       price: 'Click below to download items list',
       pdfUrl: '/shock-absorbers-price-list.pdf',
     },
@@ -40,84 +40,84 @@ export default function Products() {
       id: 1,
       category: 'hino',
       name: 'Engine Block Assembly',
-      description: 'Complete engine block for HINO vehicles',
+      description: 'Complete engine block assembly for HINO trucks',
       price: 'Contact for price',
     },
     {
       id: 2,
       category: 'hino',
       name: 'Transmission Unit',
-      description: 'Automatic transmission for HINO trucks',
+      description: 'Transmission unit for HINO trucks',
       price: 'Contact for price',
     },
     {
       id: 3,
       category: 'hino',
       name: 'Brake Pad Set',
-      description: 'High-performance brake pads',
+      description: 'Brake pad set for HINO trucks',
       price: 'Contact for price',
     },
     {
       id: 4,
       category: 'hino',
       name: 'Radiator Assembly',
-      description: 'Cooling system radiator',
+      description: 'Radiator assembly for HINO truck cooling systems',
       price: 'Contact for price',
     },
     {
       id: 5,
       category: 'defender',
       name: 'Suspension Kit',
-      description: 'Complete suspension components',
+      description: 'Complete suspension kit for Land Rover Defender',
       price: 'Contact for price',
     },
     {
       id: 6,
       category: 'defender',
       name: 'Fuel Tank',
-      description: 'Stainless steel fuel tank',
+      description: 'Stainless steel fuel tank for Land Rover Defender',
       price: 'Contact for price',
     },
     {
       id: 7,
       category: 'defender',
       name: 'Alternator',
-      description: 'Heavy-duty alternator unit',
+      description: 'Heavy-duty alternator for Land Rover Defender',
       price: 'Contact for price',
     },
     {
       id: 8,
       category: 'defender',
       name: 'Battery',
-      description: 'Military-grade battery',
+      description: 'Military-grade battery for Land Rover Defender',
       price: 'Contact for price',
     },
     {
       id: 9,
       category: 'isuzu',
       name: 'Hydraulic Pump',
-      description: 'High-pressure hydraulic pump',
+      description: 'High-pressure hydraulic pump for Isuzu trucks',
       price: 'Contact for price',
     },
     {
       id: 10,
       category: 'isuzu',
       name: 'Cooling Fan',
-      description: 'Electric cooling fan assembly',
+      description: 'Electric cooling fan assembly for Isuzu trucks',
       price: 'Contact for price',
     },
     {
       id: 11,
       category: 'isuzu',
       name: 'Fuel Injector',
-      description: 'Precision fuel injector',
+      description: 'Precision fuel injector for Isuzu trucks',
       price: 'Contact for price',
     },
     {
       id: 12,
       category: 'isuzu',
       name: 'Starter Motor',
-      description: 'Heavy-duty starter motor',
+      description: 'Heavy-duty starter motor for Isuzu trucks',
       price: 'Contact for price',
     },
     {
@@ -162,11 +162,12 @@ export default function Products() {
         <div className="container-custom">
           <FadeInView className="text-center max-w-3xl mx-auto">
             <h1 className="text-5xl md:text-7xl font-bold font-display mb-6">
-              Our <span className="text-gradient">Products</span>
+              Auto &amp; Truck <span className="text-gradient">Spare Parts</span>
             </h1>
             <p className="text-xl text-gray-600">
-              Browse our comprehensive catalog of vehicle parts and industrial
-              supplies
+              Download our spare parts price lists for Toyota, Suzuki, Hyundai,
+              Honda, Daihatsu, Mitsubishi, Nissan and Mazda, or request a quote
+              for HINO, Isuzu and Land Rover Defender parts.
             </p>
           </FadeInView>
         </div>
@@ -180,6 +181,13 @@ export default function Products() {
             <h2 className="text-3xl font-bold font-display mb-6">
               Filter by Category
             </h2>
+            <p className="text-gray-600 mb-6">
+              Looking for a specific make?{' '}
+              <Link href="/parts" className="text-primary-600 font-semibold hover:underline">
+                Browse spare parts by brand
+              </Link>
+              .
+            </p>
             <div className="flex flex-wrap gap-4">
               {categories.map((category) => (
                 <button

@@ -6,6 +6,14 @@ import Footer from '@/components/Footer';
 import ScrollProgress from '@/components/animations/ScrollProgress';
 import { Toaster } from 'sonner';
 import { Analytics } from '@vercel/analytics/next';
+import JsonLd from '@/components/JsonLd';
+import {
+  DEFAULT_DESCRIPTION,
+  DEFAULT_KEYWORDS,
+  SITE_NAME,
+  SITE_URL,
+  organizationJsonLd,
+} from '@/lib/site';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -20,20 +28,38 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: 'A & A Company | Defense & Auto Parts Supplier',
-  description:
-    'Professional defense contractor and auto parts supplier with 30+ years of experience. Specializing in HINO, Defender, and Isuzu parts.',
-  keywords:
-    'defense contractor, auto parts, HINO, Defender, Isuzu, Pakistan Army, PIA, DHA Karachi',
-  authors: [{ name: 'A & A Company' }],
-  openGraph: {
-    title: 'A & A Company | Defense & Auto Parts Supplier',
-    description:
-      'Professional defense contractor and auto parts supplier with 30+ years of experience.',
-    type: 'website',
-    locale: 'en_US',
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default:
+      'A & A Company | Auto & Truck Spare Parts Supplier in Karachi Since 1993',
+    template: '%s | A & A Company',
   },
-  robots: 'index, follow',
+  description: DEFAULT_DESCRIPTION,
+  keywords: DEFAULT_KEYWORDS,
+  applicationName: SITE_NAME,
+  authors: [{ name: SITE_NAME }],
+  openGraph: {
+    title: 'A & A Company | Auto & Truck Spare Parts Supplier in Karachi',
+    description: DEFAULT_DESCRIPTION,
+    url: '/',
+    siteName: SITE_NAME,
+    type: 'website',
+    locale: 'en_PK',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'A & A Company | Auto & Truck Spare Parts in Karachi',
+    description: DEFAULT_DESCRIPTION,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, 'max-snippet': -1 },
+  },
+  formatDetection: { telephone: true },
+  ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION && {
+    verification: { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION },
+  }),
 };
 
 export const viewport: Viewport = {
@@ -48,10 +74,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en-PK" suppressHydrationWarning>
       <head>
         <meta charSet="utf-8" />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <JsonLd
+          data={[
+            organizationJsonLd,
+            {
+              '@context': 'https://schema.org',
+              '@type': 'WebSite',
+              '@id': `${SITE_URL}/#website`,
+              url: SITE_URL,
+              name: SITE_NAME,
+              publisher: { '@id': `${SITE_URL}/#business` },
+            },
+          ]}
+        />
       </head>
       <body
         className={`${inter.variable} ${playfair.variable} font-sans antialiased`}
