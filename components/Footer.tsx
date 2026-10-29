@@ -25,6 +25,17 @@ export default function Footer() {
     { label: 'About Us', href: '/about' },
     { label: 'Services', href: '/services' },
     { label: 'Products', href: '/products' },
+    { label: 'Spare Parts by Brand', href: '/parts' },
+    { label: 'Contact', href: '/contact' },
+  ];
+
+  const partsLinks = [
+    { label: 'HINO Truck Parts', href: '/parts/hino-truck-parts' },
+    { label: 'Isuzu Truck Parts', href: '/parts/isuzu-truck-parts' },
+    { label: 'Land Rover Defender Parts', href: '/parts/land-rover-defender-parts' },
+    { label: 'Shock Absorbers', href: '/parts/shock-absorbers' },
+    { label: 'Toyota Spare Parts', href: '/parts/toyota-spare-parts' },
+    { label: 'Suzuki Spare Parts', href: '/parts/suzuki-spare-parts' },
   ];
 
   return (
@@ -36,7 +47,7 @@ export default function Footer() {
               A & A Company
             </h3>
             <p className="text-gray-400 mb-6">
-              30+ years of excellence in defense and auto parts supply.
+              Auto, truck and defence vehicle spare parts supplier in Karachi since 1993.
             </p>
             <div className="flex gap-3">
               {socialLinks.map((social) => {
@@ -76,20 +87,18 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-lg font-bold mb-6">Services</h4>
+            <h4 className="text-lg font-bold mb-6">Spare Parts</h4>
             <ul className="space-y-3 text-gray-400">
-              <li className="hover:text-primary-400 transition-colors cursor-pointer">
-                HINO Parts Supply
-              </li>
-              <li className="hover:text-primary-400 transition-colors cursor-pointer">
-                Defender Components
-              </li>
-              <li className="hover:text-primary-400 transition-colors cursor-pointer">
-                Isuzu Logistics
-              </li>
-              <li className="hover:text-primary-400 transition-colors cursor-pointer">
-                General Supplies
-              </li>
+              {partsLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="hover:text-primary-400 transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -122,7 +131,7 @@ export default function Footer() {
 
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-gray-400 text-sm">
-            © 2024 A & A Company. All rights reserved.
+            © {new Date().getFullYear()} A & A Company. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm text-gray-400">
             <Link href="#" className="hover:text-primary-400 transition-colors">
@@ -131,9 +140,9 @@ export default function Footer() {
             <Link href="#" className="hover:text-primary-400 transition-colors">
               Terms of Service
             </Link>
-            <Link href="#" className="hover:text-primary-400 transition-colors">
+            <a href="/sitemap.xml" className="hover:text-primary-400 transition-colors">
               Sitemap
-            </Link>
+            </a>
           </div>
         </div>
       </div>

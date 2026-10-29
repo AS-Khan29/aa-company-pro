@@ -23,6 +23,7 @@ export default function Navigation() {
     { label: 'About Us', href: '/about' },
     { label: 'Services', href: '/services' },
     { label: 'Products', href: '/products' },
+    { label: 'Spare Parts', href: '/parts' },
     { label: 'Contact', href: '/contact' },
   ];
 
