@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server';
+import { NextResponse, after } from 'next/server';
 import nodemailer from 'nodemailer';
 import { z } from 'zod';
 
@@ -124,6 +124,32 @@ function buildEmail(data: z.infer<typeof payloadSchema>) {
   return { subject, html, plain };
 }
 
+// Forward the enquiry to the n8n AI intake workflow. Runs after the response
+// is sent (via `after`), so the customer never waits on it, and a failure here
+// never affects the email or the form. Skipped if N8N_WEBHOOK_URL is not set.
+async function forwardToN8n(data: z.infer<typeof payloadSchema>) {
+  const url = process.env.N8N_WEBHOOK_URL;
+  if (!url) return;
+  const { website: _honeypot, ...enquiry } = data;
+  try {
+    await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-aa-secret': process.env.N8N_WEBHOOK_SECRET || '',
+      },
+      body: JSON.stringify({
+        ...enquiry,
+        submittedAt: new Date().toISOString(),
+        source: 'aandacompany.com',
+      }),
+      signal: AbortSignal.timeout(8000),
+    });
+  } catch (error) {
+    console.error('[contact] Could not forward enquiry to n8n:', error);
+  }
+}
+
 // --- Handler ---------------------------------------------------------------
 
 export async function POST(request: Request) {
@@ -193,6 +219,7 @@ export async function POST(request: Request) {
       text: plain,
       html,
     });
+    after(() => forwardToN8n(data));
     return NextResponse.json({ ok: true });
   } catch (error) {
     console.error('[contact] Failed to send email via Zoho SMTP:', error);
