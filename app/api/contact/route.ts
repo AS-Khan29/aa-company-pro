@@ -129,10 +129,13 @@ function buildEmail(data: z.infer<typeof payloadSchema>) {
 // never affects the email or the form. Skipped if N8N_WEBHOOK_URL is not set.
 async function forwardToN8n(data: z.infer<typeof payloadSchema>) {
   const url = process.env.N8N_WEBHOOK_URL;
-  if (!url) return;
+  if (!url) {
+    console.error('[contact] N8N_WEBHOOK_URL is not set; enquiry not forwarded.');
+    return;
+  }
   const { website: _honeypot, ...enquiry } = data;
   try {
-    await fetch(url, {
+    const res = await fetch(url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -145,6 +148,11 @@ async function forwardToN8n(data: z.infer<typeof payloadSchema>) {
       }),
       signal: AbortSignal.timeout(8000),
     });
+    if (res.ok) {
+      console.warn('[contact] Enquiry forwarded to n8n.');
+    } else {
+      console.error(`[contact] n8n rejected the enquiry: HTTP ${res.status} ${await res.text().catch(() => '')}`);
+    }
   } catch (error) {
     console.error('[contact] Could not forward enquiry to n8n:', error);
   }
